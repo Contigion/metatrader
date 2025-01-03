@@ -1,4 +1,4 @@
-__all__ = ["connect", "history", "trades", "account", "actions", "util"]
+__all__ = ["connect", "history", "trades", "account", "actions"]
 
 from . import util
 from .connect import connect, disconnect
