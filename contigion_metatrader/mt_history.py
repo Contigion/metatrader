@@ -1,6 +1,11 @@
 from datetime import datetime, timedelta
 import MetaTrader5 as mt5  # pylint: disable=no-name-in-module
 
+__all__ = ["get_trade_history_by_hours_ago", "get_trade_history_by_days_ago", "get_trade_history_by_year",
+           "get_trade_close_history_by_hours_ago", "get_trade_close_history_by_days_ago",
+           "get_trade_close_history_by_year", "get_profit_loss_history", "get_profit_loss_history_totals",
+           "get_profit_loss_history_count"]
+
 
 def get_trade_history_by_hours_ago(hours_ago=1):
     """Retrieve trade history for the specified number of hours ago."""

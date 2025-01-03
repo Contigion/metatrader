@@ -1,5 +1,8 @@
-from MetaTrader5 import positions_get   # pylint: disable=no-name-in-module
+from MetaTrader5 import positions_get  # pylint: disable=no-name-in-module
 from .mt_actions import close_trade
+
+__all__ = ["close_profits", "close_losses", "close_all_trades", "close_last_trade", "get_open_trades", "get_open_trade",
+           "trades_in_profit"]
 
 
 def close_profits():
@@ -64,5 +67,3 @@ def trades_in_profit():
     profitable_trades = sum(position.profit > 0 for position in positions if position.profit is not None)
 
     return f"{profitable_trades} / {len(positions) if positions else 0}"
-
-
