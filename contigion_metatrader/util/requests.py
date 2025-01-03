@@ -1,5 +1,5 @@
 from MetaTrader5 import (order_send, TRADE_ACTION_DEAL, ORDER_TIME_GTC, ORDER_FILLING_IOC, TRADE_ACTION_SLTP,
-                         TRADE_RETCODE_DONE)  # pylint: disable=no-name-in-module
+                         TRADE_RETCODE_DONE)
 from contigion_metatrader.config import DEVIATION, MAGIC
 
 __all__ = ["execute_request", "create_trade_request", "adjust_trade_request", "adjust_stops_request",

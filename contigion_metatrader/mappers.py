@@ -1,6 +1,6 @@
 from MetaTrader5 import (ORDER_TYPE_BUY, ORDER_TYPE_SELL, TIMEFRAME_M1, TIMEFRAME_M5, TIMEFRAME_M15, TIMEFRAME_M30,
                          TIMEFRAME_H1, TIMEFRAME_H4, TIMEFRAME_D1, TIMEFRAME_W1, TIMEFRAME_MN1, symbol_info
-                         )  # pylint: disable=no-name-in-module,no-member
+                         )
 
 TIMEFRAME_MAP = {
     'M1': TIMEFRAME_M1,
