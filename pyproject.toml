@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "contigion-<REPOSITORY>"
+name = "contigion-metatrader"
 version = "0.0.0"
 description = ""
 authors = [
@@ -11,6 +11,10 @@ authors = [
 ]
 readme = "README.md"
 dependencies = [
+    "pandas",
+    "MetaTrader5",
+    "contigion_utils",
+    "datetime"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.12",
@@ -18,4 +22,4 @@ classifiers = [
 ]
 
 [tool.setuptools]
-packages = ["contigion-<REPOSITORY>"]
+packages = ["contigion_metatrader"]
