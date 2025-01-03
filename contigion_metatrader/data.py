@@ -1,6 +1,6 @@
 import pandas as pd
 from MetaTrader5 import TIMEFRAME_M15, copy_rates_from_pos, symbols_get   # pylint: disable=no-name-in-module,no-member
-from mappers import get_timeframe_map
+from .mappers import get_timeframe_map
 
 
 def get_market_data(symbol='USDJPY', timeframe=TIMEFRAME_M15, number_of_candles=500):
