@@ -13,7 +13,8 @@ readme = "README.md"
 dependencies = [
     "pandas",
     "MetaTrader5",
-    "contigion_utils"
+    "contigion_utils",
+    "datetime"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.12",
