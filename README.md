@@ -1,5 +1,5 @@
 # contigion-metatrader
-A template repo for future Contigion repositories
+A library for retrieving forex data in the Contigion projects
 
 [![Pylint](https://github.com/Contigion/metatrader/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/Contigion/utils/actions/workflows/pylint.yml)
 [![Publish to PyPI](https://github.com/Contigion/metatrader/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/Contigion/utils/actions/workflows/publish.yml)
