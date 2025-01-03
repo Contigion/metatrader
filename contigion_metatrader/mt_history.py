@@ -1,93 +1,57 @@
 from datetime import datetime, timedelta
 import MetaTrader5 as mt5  # pylint: disable=no-name-in-module,no-member
 
-__all__ = ["get_trade_history_by_hours_ago", "get_trade_history_by_days_ago", "get_trade_history_by_year",
-           "get_trade_close_history_by_hours_ago", "get_trade_close_history_by_days_ago",
-           "get_trade_close_history_by_year", "get_profit_loss_history", "get_profit_loss_history_totals",
+__all__ = ["get_trade_history", "get_profit_loss_history", "get_profit_loss_history_totals",
            "get_profit_loss_history_count"]
 
 
-def get_trade_history_by_hours_ago(hours_ago=1):
-    """Retrieve trade history for the specified number of hours ago."""
+def get_trade_history(hours_ago=None, days_ago=None, year=None, is_close_history=False):
+    """
+    Retrieve trade history within a specified time range or year.
+
+    Parameters:
+        hours_ago (int, optional): Number of hours ago to start the history range.
+        days_ago (int, optional): Number of days ago to start the history range.
+        year (int, optional): Year to retrieve the history for (uses January 1st as the start date).
+        is_close_history (bool, optional): If True, filters for close trade history; otherwise, filters for open trades.
+
+    Returns:
+        list: List of trades matching the criteria.
+
+    Raises:
+        ValueError: If none or multiple time parameters are provided simultaneously.
+        RuntimeError: If trade history retrieval fails.
+    """
     now = datetime.now()
-    start_date = now - timedelta(hours=hours_ago)
+
+    # Validate input parameters
+    if not any([hours_ago, days_ago, year]):
+        raise ValueError("At least one of 'hours_ago', 'days_ago', or 'year' must be provided.")
+    if sum(param is not None for param in [hours_ago, days_ago, year]) > 1:
+        raise ValueError("Only one of 'hours_ago', 'days_ago', or 'year' can be specified at a time.")
+
+    # Determine start date
+    if hours_ago:
+        start_date = now - timedelta(hours=hours_ago)
+    elif days_ago:
+        start_date = now - timedelta(days=days_ago)
+    else:
+        start_date = datetime(year, 1, 1)
+
     end_date = now + timedelta(hours=3)
-
+    trade_entry = 1 if is_close_history else 0
     trades = mt5.history_deals_get(start_date, end_date)
+
     if trades is None:
-        raise RuntimeError("Failed to retrieve trade history.")
+        raise RuntimeError("Failed to retrieve trade.")
 
-    return [trade for trade in trades if trade.entry == 0]
-
-
-def get_trade_history_by_days_ago(days_ago=1):
-    """Retrieve trade history for the specified number of days ago."""
-    now = datetime.now()
-    start_date = now - timedelta(days=days_ago)
-    end_date = now + timedelta(hours=3)
-
-    trades = mt5.history_deals_get(start_date, end_date)
-    if trades is None:
-        raise RuntimeError("Failed to retrieve trade history.")
-
-    return [trade for trade in trades if trade.entry == 0]
+    history = [trade for trade in trades if trade.entry == trade_entry]
+    return history
 
 
-def get_trade_history_by_year(year=2024):
-    """Retrieve trade history for the specified year."""
-    now = datetime.now()
-    start_date = datetime(year, 1, 1)
-    end_date = now + timedelta(hours=3)
-
-    trades = mt5.history_deals_get(start_date, end_date)
-    if trades is None:
-        raise RuntimeError("Failed to retrieve trade history.")
-
-    return [trade for trade in trades if trade.entry == 0]
-
-
-def get_trade_close_history_by_hours_ago(hours_ago=1):
-    """Retrieve closed trade history for the specified number of hours ago."""
-    now = datetime.now()
-    start_date = now - timedelta(hours=hours_ago)
-    end_date = now + timedelta(hours=3)
-
-    trades = mt5.history_deals_get(start_date, end_date)
-    if trades is None:
-        raise RuntimeError("Failed to retrieve trade close history.")
-
-    return [trade for trade in trades if trade.entry == 1]
-
-
-def get_trade_close_history_by_days_ago(days_ago=1):
-    """Retrieve closed trade history for the specified number of days ago."""
-    now = datetime.now()
-    start_date = now - timedelta(days=days_ago)
-    end_date = now + timedelta(hours=3)
-
-    trades = mt5.history_deals_get(start_date, end_date)
-    if trades is None:
-        raise RuntimeError("Failed to retrieve trade close history.")
-
-    return [trade for trade in trades if trade.entry == 1]
-
-
-def get_trade_close_history_by_year(year=2024):
-    """Retrieve closed trade history for the specified year."""
-    now = datetime.now()
-    start_date = datetime(year, 1, 1)
-    end_date = now + timedelta(hours=3)
-
-    trades = mt5.history_deals_get(start_date, end_date)
-    if trades is None:
-        raise RuntimeError("Failed to retrieve trade close history.")
-
-    return [trade for trade in trades if trade.entry == 1]
-
-
-def get_profit_loss_history():
+def get_profit_loss_history(year=2025):
     """Get the profit and loss history."""
-    trade_history = get_trade_history_by_year()
+    trade_history = get_trade_history(year=year)
     profit_history = [trade.profit for trade in trade_history if trade.type in [0, 1] and trade.profit >= 0]
     loss_history = [abs(trade.profit) for trade in trade_history if trade.type in [0, 1] and trade.profit < 0]
 
