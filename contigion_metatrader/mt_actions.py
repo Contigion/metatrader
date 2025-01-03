@@ -1,4 +1,4 @@
-from MetaTrader5 import positions_get, symbol_info, ORDER_TYPE_BUY, ORDER_TYPE_SELL  # pylint: disable=no-name-in-module
+from MetaTrader5 import positions_get, symbol_info, ORDER_TYPE_BUY, ORDER_TYPE_SELL  # pylint: disable=no-name-in-module,no-member
 from mt_mappers import get_order_close_map, get_market_price_map
 from .util.mt_requests import (adjust_stop_loss_request, adjust_stops_request,
                                adjust_take_profit_request,

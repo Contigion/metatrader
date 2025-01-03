@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-import MetaTrader5 as mt5  # pylint: disable=no-name-in-module
+import MetaTrader5 as mt5  # pylint: disable=no-name-in-module,no-member
 
 __all__ = ["get_trade_history_by_hours_ago", "get_trade_history_by_days_ago", "get_trade_history_by_year",
            "get_trade_close_history_by_hours_ago", "get_trade_close_history_by_days_ago",

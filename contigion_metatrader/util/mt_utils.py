@@ -1,4 +1,4 @@
-from MetaTrader5 import order_calc_profit, symbol_info  # pylint: disable=no-name-in-module
+from MetaTrader5 import order_calc_profit, symbol_info  # pylint: disable=no-name-in-module,no-member
 
 __all__ = ["calculate_profit", "get_point", "get_spread"]
 

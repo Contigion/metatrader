@@ -1,5 +1,5 @@
 import pandas as pd
-from MetaTrader5 import TIMEFRAME_M15, copy_rates_from_pos, symbols_get   # pylint: disable=no-name-in-module
+from MetaTrader5 import TIMEFRAME_M15, copy_rates_from_pos, symbols_get   # pylint: disable=no-name-in-module,no-member
 from mt_mappers import get_timeframe_map
 
 
