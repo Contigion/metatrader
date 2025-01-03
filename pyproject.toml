@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "contigion-metatrader"
 version = "0.0.0"
-description = ""
+description = "A library for retrieving forex data in the Contigion projects"
 authors = [
     { name = "Contigion", email = "contigion@gmail.com" }
 ]
