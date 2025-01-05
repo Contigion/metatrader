@@ -196,7 +196,7 @@ jobs:
           if [[ -s CHANGELOG_TEMP.md ]]; then
             cat CHANGELOG_TEMP.md > CHANGELOG.md
             CHANGES_CONTENT=$(cat CHANGELOG.md)
-            echo -e "CONTENT<<EOF\n$CHANGES_CONTENT\nEOF" >> $GITHUB_ENV
+            echo -e "CONTENT<<$CHANGES_CONTENT" >> $GITHUB_ENV
           else
             echo "CONTENT=No changes for changelog" >> $GITHUB_ENV
           fi 
