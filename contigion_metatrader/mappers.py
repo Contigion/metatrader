@@ -56,7 +56,8 @@ def get_market_price_map(position):
     info = symbol_info(position.symbol)
 
     if info is None:
-        raise RuntimeError(f"Failed to retrieve market information for symbol: {position.symbol}")
+        raise RuntimeError(f"{__file__}: {get_market_price_map.__name__}\n"
+                           f"Failed to retrieve market information for symbol: {position.symbol}")
 
     return {
         ORDER_TYPE_BUY: info.bid,

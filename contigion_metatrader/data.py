@@ -22,7 +22,8 @@ def get_market_data(symbol='USDJPY', timeframe=TIMEFRAME_M15, number_of_candles=
     rates = copy_rates_from_pos(symbol, timeframe, 0, number_of_candles)
 
     if rates is None:
-        raise RuntimeError(f"Failed to retrieve data for {symbol}.")
+        raise RuntimeError(f"{__file__}: {get_market_data.__name__}\n"
+                           f"Failed to retrieve data for {symbol}.")
 
     data = pd.DataFrame(rates)
     data['time'] = pd.to_datetime(data['time'], unit='s')
@@ -46,7 +47,8 @@ def get_symbol_names():
     symbols = symbols_get()
 
     if symbols is None:
-        raise RuntimeError("Failed to retrieve symbols.")
+        raise RuntimeError(f"{__file__}: {get_symbol_names.__name__}\n"
+                           "Failed to retrieve symbols.")
 
     return [symbol.name for symbol in symbols]
 
@@ -72,6 +74,7 @@ def get_timeframe_value(timeframe):
     timeframe_map = get_timeframe_map()
 
     if timeframe not in timeframe_map:
-        raise KeyError(f"Unknown timeframe: {timeframe}")
+        raise KeyError(f"{__file__}: {get_timeframe_value.__name__}\n"
+                       f"Unknown timeframe: {timeframe}")
 
     return timeframe_map[timeframe]
