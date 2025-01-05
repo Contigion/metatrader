@@ -1,10 +1,10 @@
 # contigion-metatrader
 A template repo for future Contigion repositories
 
-[![Pylint](https://github.com/Contigion/metatrader/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/Contigion/utils/actions/workflows/pylint.yml)
-[![Publish to PyPI](https://github.com/Contigion/metatrader/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/Contigion/utils/actions/workflows/publish.yml)
-[![Python Version](https://img.shields.io/pypi/pyversions/contigion-metatrader?style=flat)](https://pypi.org/project/contigion-utils/)
-[![PyPi Version](https://img.shields.io/pypi/v/contigion-metatrader?style=flat)](https://pypi.org/project/contigion-utils/)
+[![Pylint](https://github.com/Contigion/metatrader/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/Contigion/metatrader/actions/workflows/pylint.yml)
+[![Publish to PyPI](https://github.com/Contigion/metatrader/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/Contigion/metatrader/actions/workflows/publish.yml)
+[![Python Version](https://img.shields.io/pypi/pyversions/contigion-metatrader?style=flat)](https://pypi.org/project/contigion-metatrader/)
+[![PyPi Version](https://img.shields.io/pypi/v/contigion-metatrader?style=flat)](https://pypi.org/project/contigion-metatrader/)
 
 ## Installation
 To install the library, simply run:
