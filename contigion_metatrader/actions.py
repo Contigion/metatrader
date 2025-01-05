@@ -27,7 +27,8 @@ def open_long_trade(symbol, volume, stop_loss=0, take_profit=0, comment="Contigi
     info = symbol_info(symbol)
 
     if info is None:
-        raise ValueError(f"Invalid symbol: {symbol}")
+        raise ValueError(f"{__file__}: {open_long_trade.__name__}\n"
+                         f"Invalid symbol: {symbol}")
 
     point = info.point
     price = info.ask
@@ -62,7 +63,8 @@ def open_short_trade(symbol, volume, stop_loss=0, take_profit=0, comment="PipsPy
     info = symbol_info(symbol)
 
     if info is None:
-        raise ValueError(f"Invalid symbol: {symbol}")
+        raise ValueError(f"{__file__}: {open_short_trade.__name__}\n"
+                         f"Invalid symbol: {symbol}")
 
     point = info.point
     price = info.bid  # Use bid price for short trades
@@ -90,7 +92,8 @@ def close_trade(ticket):
     positions = positions_get(ticket=ticket)
 
     if not positions:
-        raise ValueError(f"Ticket does not exist: {ticket}")
+        raise ValueError(f"{__file__}: {close_trade.__name__}\n"
+                         f"Ticket does not exist: {ticket}")
 
     position = positions[0]
 

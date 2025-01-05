@@ -26,9 +26,12 @@ def get_trade_history(hours_ago=None, days_ago=None, year=None, is_close_history
 
     # Validate input parameters
     if not any([hours_ago, days_ago, year]):
-        raise ValueError("At least one of 'hours_ago', 'days_ago', or 'year' must be provided.")
+        raise ValueError(f"{__file__}: {get_trade_history.__name__}\n"
+                         "At least one of 'hours_ago', 'days_ago', or 'year' must be provided.")
+
     if sum(param is not None for param in [hours_ago, days_ago, year]) > 1:
-        raise ValueError("Only one of 'hours_ago', 'days_ago', or 'year' can be specified at a time.")
+        raise ValueError(f"{__file__}: {get_trade_history.__name__}\n"
+                         "Only one of 'hours_ago', 'days_ago', or 'year' can be specified at a time.")
 
     # Determine start date
     if hours_ago:
@@ -43,7 +46,8 @@ def get_trade_history(hours_ago=None, days_ago=None, year=None, is_close_history
     trades = mt5.history_deals_get(start_date, end_date)
 
     if trades is None:
-        raise RuntimeError("Failed to retrieve trade.")
+        raise RuntimeError(f"{__file__}: {get_trade_history.__name__}\n"
+                           "Failed to retrieve trade.")
 
     history = [trade for trade in trades if trade.entry == trade_entry]
     return history

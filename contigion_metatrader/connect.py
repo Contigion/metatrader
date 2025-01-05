@@ -12,7 +12,8 @@ def connect():
 
     while not connected:
         if retries > max_retries:
-            raise RuntimeError("Failed to establish MetaTrader 5 connection. \n")
+            raise RuntimeError(f"{__file__}: {connect.__name__}\n"
+                               "Failed to establish MetaTrader 5 connection. \n")
 
         print_warning(f"Unable to establish MetaTrader5 connection. Retrying ({retries} / {max_retries}) ... \n")
         connected = initialize()
@@ -26,6 +27,7 @@ def disconnect():
     disconnected = shutdown()
 
     if not disconnected:
-        raise RuntimeError("Failed to close MetaTrader 5 connection. \n")
+        raise RuntimeError(f"{__file__}: {disconnect.__name__}\n"
+                           "Failed to close MetaTrader 5 connection. \n")
 
     print_success("Disconnected from MetaTrader 5. \n")

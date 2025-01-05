@@ -23,8 +23,11 @@ def execute_request(request):
     result = order_send(request)
 
     if result is None or result.retcode != TRADE_RETCODE_DONE:
-        retcode = result.retcode if result is not None else ""
-        raise RuntimeError(f"Failed to open trade / adjust stops: {retcode}")
+        retcode = result.retcode if result is not None else "None"
+        raise RuntimeError(f"{__file__}: {execute_request.__name__}"
+                           "Failed to open trade / adjust stops. "
+                           "Check that you have algotrading enabled, and that the markets are open.\n"
+                           f"retcode= : {retcode}")
 
     return result
 
