@@ -1,22 +1,6 @@
-from MetaTrader5 import order_calc_profit, symbol_info
+from MetaTrader5 import symbol_info
 
-__all__ = ["calculate_profit", "get_point", "get_spread"]
-
-
-def calculate_profit(trade_type, symbol, volume, open_price, close_price):
-    """Calculate the profit for a trade.
-
-    Args:
-        trade_type (int): The type of trade (buy/sell).
-        symbol (str): The trading symbol.
-        volume (float): The volume of the trade.
-        open_price (float): The opening price of the trade.
-        close_price (float): The closing price of the trade.
-
-    Returns:
-        float: The calculated profit.
-    """
-    return order_calc_profit(trade_type, symbol, volume, open_price, close_price)
+__all__ = ["get_point", "get_spread"]
 
 
 def get_point(symbol):
