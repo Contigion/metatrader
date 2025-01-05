@@ -1,8 +1,8 @@
-from MetaTrader5 import positions_get
+from MetaTrader5 import positions_get, order_calc_profit
 from .actions import close_trade
 
 __all__ = ["close_profits", "close_losses", "close_all_trades", "close_last_trade", "get_open_trades", "get_open_trade",
-           "trades_in_profit"]
+           "trades_in_profit", "calculate_profit"]
 
 
 def close_profits():
@@ -67,3 +67,19 @@ def trades_in_profit():
     profitable_trades = sum(position.profit > 0 for position in positions if position.profit is not None)
 
     return f"{profitable_trades} / {len(positions) if positions else 0}"
+
+
+def calculate_profit(trade_type, symbol, volume, open_price, close_price):
+    """Calculate the profit for a trade.
+
+    Args:
+        trade_type (int): The type of trade (buy/sell).
+        symbol (str): The trading symbol.
+        volume (float): The volume of the trade.
+        open_price (float): The opening price of the trade.
+        close_price (float): The closing price of the trade.
+
+    Returns:
+        float: The calculated profit.
+    """
+    return order_calc_profit(trade_type, symbol, volume, open_price, close_price)

@@ -1,4 +1,4 @@
-__all__ = ["connect", "history", "trades", "account", "actions", "mappers", "data"]
+__all__ = ["connect", "history", "trades", "account", "actions", "mappers", "data", "symbol"]
 
 from .connect import connect, disconnect
 from .history import (get_trade_history, get_profit_loss_history, get_profit_loss_history_totals,
@@ -10,6 +10,7 @@ from .actions import (open_long_trade, open_short_trade, close_trade, adjust_tak
                       adjust_stops)
 from .mappers import (get_timeframe_map, get_order_close_map, get_action_map, get_market_price_map, convert_action,
                       convert_signal)
-from .data import (get_market_data, get_symbol_names, get_timeframes, get_timeframe_value)
+from .data import get_market_data, get_symbol_names, get_timeframes, get_timeframe_value
 from .trades import (close_profits, close_losses, close_all_trades, close_last_trade, get_open_trades, get_open_trade,
-                     trades_in_profit)
+                     trades_in_profit, calculate_profit)
+from .symbol import get_point, get_spread
