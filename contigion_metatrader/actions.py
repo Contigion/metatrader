@@ -4,9 +4,6 @@ from .util.requests import (adjust_stop_loss_request, adjust_stops_request,
                             adjust_take_profit_request,
                             create_trade_request, execute_request)
 
-__all__ = ["open_long_trade", "open_short_trade", "close_trade", "adjust_take_profit", "adjust_stop_loss",
-           "adjust_stops"]
-
 
 def open_long_trade(symbol, volume, stop_loss=0, take_profit=0, comment="Contigion Open Order"):
     """Place a long trade for the specified symbol.

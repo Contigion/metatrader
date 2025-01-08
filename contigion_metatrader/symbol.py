@@ -1,7 +1,5 @@
 from MetaTrader5 import symbol_info
 
-__all__ = ["get_point", "get_spread"]
-
 
 def get_point(symbol):
     """

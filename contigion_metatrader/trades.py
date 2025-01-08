@@ -1,9 +1,6 @@
 from MetaTrader5 import positions_get, order_calc_profit
 from .actions import close_trade
 
-__all__ = ["close_profits", "close_losses", "close_all_trades", "close_last_trade", "get_open_trades", "get_open_trade",
-           "trades_in_profit", "calculate_profit"]
-
 
 def close_profits():
     """Close all profitable positions."""

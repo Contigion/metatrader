@@ -2,10 +2,8 @@ import pandas as pd
 from MetaTrader5 import TIMEFRAME_M15, copy_rates_from_pos, symbols_get
 from .mappers import get_timeframe_map
 
-__all__ = ["get_market_data", "get_symbol_names", "get_timeframes", "get_timeframe_value"]
 
-
-def get_market_data(symbol='USDJPY', timeframe=TIMEFRAME_M15, number_of_candles=500):
+def get_market_data(symbol='USDJPY', timeframe=TIMEFRAME_M15, number_of_candles=500, drop_current_candle=True):
     """Retrieve market data for a given symbol and timeframe.
 
     Args:
@@ -29,7 +27,7 @@ def get_market_data(symbol='USDJPY', timeframe=TIMEFRAME_M15, number_of_candles=
     data['time'] = pd.to_datetime(data['time'], unit='s')
 
     # Remove the last row if it's an incomplete candle
-    if not data.empty:
+    if not data.empty and drop_current_candle:
         data.drop(data.index[-1], inplace=True)
 
     return data[['time', 'open', 'high', 'low', 'close', 'tick_volume']]
