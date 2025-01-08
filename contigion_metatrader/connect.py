@@ -1,8 +1,6 @@
 from MetaTrader5 import initialize, shutdown
 from contigion_utils import print_success, print_warning, print_info
 
-__all__ = ["connect", "disconnect"]
-
 
 def connect():
     print_info("Connecting to MT5 ... \n")

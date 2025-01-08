@@ -2,9 +2,6 @@ from MetaTrader5 import (ORDER_TYPE_BUY, ORDER_TYPE_SELL, TIMEFRAME_M1, TIMEFRAM
                          TIMEFRAME_H1, TIMEFRAME_H4, TIMEFRAME_D1, TIMEFRAME_W1, TIMEFRAME_MN1, symbol_info
                          )
 
-__all__ = ["get_timeframe_map", "get_order_close_map", "get_action_map", "get_market_price_map", "convert_action",
-           "convert_signal"]
-
 TIMEFRAME_MAP = {
     'M1': TIMEFRAME_M1,
     'M5': TIMEFRAME_M5,

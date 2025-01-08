@@ -1,9 +1,6 @@
 from datetime import datetime, timedelta
 import MetaTrader5 as mt5
 
-__all__ = ["get_trade_history", "get_profit_loss_history", "get_profit_loss_history_totals",
-           "get_profit_loss_history_count"]
-
 
 def get_trade_history(hours_ago=None, days_ago=None, year=None, is_close_history=False):
     """
